@@ -11,7 +11,7 @@ import tushare as ts
 
 def is_trade_time():
     now = int(time.strftime('%H%M'))
-    return 930 <= now <= 1500
+    return 930 <= now <= 1130 or 1300 <= now <= 1500
 
 
 def is_trade_day(date):
@@ -58,10 +58,9 @@ def send_mail(content):
         # 登录到服务器
         smtpObj.login(mail_user, mail_pass)
         # 发送
-        smtpObj.sendmail(
-            sender, receivers, message.as_string())
+        smtpObj.sendmail(sender, receivers, message.as_string())
         # 退出
         smtpObj.quit()
-        print('success')
+        print('send email success')
     except smtplib.SMTPException as e:
-        print('error', e)
+        print('send email error', e)

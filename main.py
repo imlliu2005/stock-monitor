@@ -10,8 +10,8 @@ def monitor():
     today = time.strftime('%Y-%m-%d', time.localtime(time.time()))
     # 判断是否是交易日
     trade_day = util.is_trade_day(today)
-    # trade_time = util.is_trade_time()
-    if trade_day:
+    trade_time = util.is_trade_time()
+    if trade_day and trade_time:
         sales = []
         for code in codes:
             price = float(util.get_stock_price(code))
@@ -41,7 +41,7 @@ def run():
     while True:
         monitor()
         # 延时60s
-        time.sleep(5)
+        time.sleep(10)
 
 
 run()

@@ -8,8 +8,9 @@ codes = ['002252', '002603', '000725']
 def monitor():
     # 获取当天日期
     today = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    # 判断是否是交易日
+    # 是否是交易日
     trade_day = util.is_trade_day(today)
+    # 是否开市
     trade_time = util.is_trade_time()
     if trade_day and trade_time:
         sales = []
@@ -40,11 +41,11 @@ def monitor():
 def run():
     while True:
         monitor()
-        # 延时60s
-        time.sleep(10)
         if util.is_closed_time():
             print('time is 15:00 stock closed!')
             return
+        # 延时10s
+        time.sleep(10)
 
 
 run()

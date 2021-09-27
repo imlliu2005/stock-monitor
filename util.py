@@ -14,6 +14,11 @@ def is_trade_time():
     return 930 <= now <= 1130 or 1300 <= now <= 1500
 
 
+def is_closed_time():
+    now = int(time.strftime('%H%M'))
+    return now > 1500
+
+
 def is_trade_day(date):
     mydate = datetime.strptime(date, '%Y-%m-%d').date()
     if is_workday(mydate):

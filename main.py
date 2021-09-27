@@ -42,6 +42,9 @@ def run():
         monitor()
         # 延时60s
         time.sleep(10)
+        if util.is_closed_time():
+            print('time is 15:00 stock closed!')
+            return
 
 
 run()
